@@ -1,31 +1,41 @@
-import styles from "./page.module.css";
-import HamburgerIcon from "./components/icons/HamburgerIcon";
-import CircleFlower from "./components/icons/CircleFlower";
-import SearchIcon from "./components/icons/Search";
-import LoveIcon from "./components/icons/Love";
-import BagIcon from "./components/icons/Bag";
-export default function Home() {
+import Header from "./components/Header";
+import { randomUUID } from "crypto";
+import styles from './page.module.css';
+import Products from "./components/Products";
+
+export default async function Home() {
+
+  const links = [
+    "SHOP",
+    "SKILLS",
+    "STORES",
+    "ABOUT",
+    "CONTACT US"
+  ]
+
+  const res = await fetch('http://localhost:3000/api/products');
+  const products = await res.json();
 
   return (
     <div>
       <main>
-        <div className={styles.headers}>
-          <div className={styles.headers_left_section}>
-            <HamburgerIcon></HamburgerIcon>
-            <CircleFlower></CircleFlower>
-          </div>
-          <h3>LOGO</h3>
-          <div className={styles.headers_right_section}>
-            <SearchIcon></SearchIcon>
-            <LoveIcon></LoveIcon>
-            <BagIcon></BagIcon>
-          </div>
-        </div>
-        <section style={{display:"flex", padding: "40px"}}>
-          <h4 style={{marginRight:"4px", color:"#BFC8CD", fontWeight:"400", letterSpacing:"-1px"}}>HOME</h4>
-          <span style={{marginRight:"4px"}}>|</span>
-          <h4 style={{fontWeight:"400", letterSpacing:"-1px"}}>SHOP</h4>
+        <Header></Header>
+        <section style={{display:"flex", justifyContent:"center", gap:"48px", height:"96px", alignItems:"center"}}>
+          {links.map(link => {
+            return <span key={randomUUID()}>
+              <h4 style={{fontWeight:"700", letterSpacing:"-1px"}}>{link}</h4>
+            </span>
+          })}
         </section>
+        <div className={styles.hr}></div>
+        <section style={{display:'flex',flexDirection:'column', marginTop:'48px', marginBottom:'48px', alignItems:'center'}}>
+          <h3 style={{fontSize:'60px', fontWeight:'400', lineHeight:'72px'}}>DISCOVER OUR PRODUCTS</h3>
+          <p style={{width:'50%', fontSize:'22px', lineHeight:'40px', textAlign:'center', marginTop:'24px'}}>Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.</p>
+        </section>
+        <div className={styles.hr}></div>
+        <div></div>
+        <div className={styles.hr}></div>
+        <Products products={products}></Products>
       </main>
       <footer>
         
