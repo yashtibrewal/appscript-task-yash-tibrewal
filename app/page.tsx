@@ -13,8 +13,10 @@ export default async function Home() {
     "CONTACT US"
   ]
 
-  const res = await fetch('http://localhost:3000/api/products');
-  const products = await res.json();
+  let products = [];
+  const res = await fetch('http://localhost:3000/api/products?limit=18');
+  products = await res.json();
+  
 
   return (
     <div>
@@ -32,13 +34,21 @@ export default async function Home() {
           <h3 style={{fontSize:'60px', fontWeight:'400', lineHeight:'72px'}}>DISCOVER OUR PRODUCTS</h3>
           <p style={{width:'50%', fontSize:'22px', lineHeight:'40px', textAlign:'center', marginTop:'24px'}}>Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.</p>
         </section>
-        <div className={styles.hr}></div>
-        <div></div>
-        <div className={styles.hr}></div>
-        <Products products={products}></Products>
-      </main>
-      <footer>
         
+        <div style={{marginLeft:"5%"}}>
+          <Products products={products}></Products>
+        </div>
+      </main>
+      <footer style={{backgroundColor:"black", color:"white", display:"flex", paddingLeft:"12rem", paddingRight: "12rem", paddingTop:"6rem", paddingBottom:"6rem"}}>
+        <div style={{width:"50%"}}>
+          <div style={{fontWeight:"700"}}>BE THE FIRST TO KNOW</div>
+          <div>Sign up for updates from mettā muse.</div>
+        </div>
+        <div style={{width:"50%", marginLeft:"12rem", display:"flex", flexDirection:"column"}}>
+          <div style={{fontWeight:"700"}}>CONTACT US</div>
+          <div>+44 221 133 5360</div>
+          <div>customercare@mettamuse.com</div>
+        </div>
       </footer>
     </div>
   );
