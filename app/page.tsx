@@ -13,11 +13,17 @@ export default async function Home() {
     "CONTACT US"
   ]
 
-  let products = [];
-  const res = await fetch('http://localhost:3000/api/products?limit=18');
-  products = await res.json();
-  
+  const productsUri = process.env.NEXT_PRODUCTS_API_URL;
 
+  let products = [];
+
+  try{
+    const res = await fetch(productsUri+'/products?limit=18');
+    products = await res.json();
+  } catch (error){
+    console.log(error)  
+  }
+  
   return (
     <div>
       <main>

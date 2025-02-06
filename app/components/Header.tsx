@@ -9,12 +9,12 @@ import ProfileIcon from "./icons/Profile";
 import MoreIcon from "./icons/More";
 
 const Header = () => {
-    return <div style={{display:'flex', justifyContent:'space-between', marginLeft:'12px', marginRight:'12px', alignItems:'center', height:'48px'}}>
+    return <nav style={{display:'flex', justifyContent:'space-between', marginLeft:'12px', marginRight:'12px', alignItems:'center', height:'48px'}}>
       <div style={{display:'flex', gap:'16px'}}>
         <span className={styles.show_xs}><HamburgerIcon></HamburgerIcon></span>
         <CircleFlower></CircleFlower>
       </div>
-      <h1 style={{alignSelf:'center'}}>LOGO</h1>
+      <h1 style={{alignSelf:'center', paddingLeft:"9rem"}}>LOGO</h1>
       <div style={{display:'flex', gap:'16px'}}>
         <SearchIcon></SearchIcon>
         <LoveIcon></LoveIcon>
@@ -22,7 +22,7 @@ const Header = () => {
         <ProfileIcon></ProfileIcon>
         <span style={{display:'flex', alignItems:'center', gap:'4px'}}>ENG<MoreIcon></MoreIcon></span>
       </div>
-    </div>
+    </nav>
 }
 
 export default Header;

@@ -100,7 +100,7 @@ export default function Products({products}: ProductsProps) {
                 ))}
             </div>}
             <div style={{display:'flex', flexWrap: 'wrap', flexGrow:productsflexGrow, flexBasis:"0"}}>
-                {products && products.map((product) => (
+                {products.length ? products.map((product) => (
                     <div key={product.id} style={{width:productColumns,  padding:"20px"}}>
                         <Image
                             src={product.image}
@@ -113,7 +113,7 @@ export default function Products({products}: ProductsProps) {
                             <LoveIcon></LoveIcon>
                         </div>
                     </div>
-                ))}
+                )): <>Opps No products found</> }
             </div>
         </div>
     </div>)
